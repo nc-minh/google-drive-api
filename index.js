@@ -42,4 +42,43 @@ async function uploadFile(){
     }
 }
 
-uploadFile()
+// uploadFile()
+
+//delete
+async function deleteFile(){
+    try {
+        const response = await driver.files.delete({
+            fileId: '1Yg692FyytyQuS12c4LrvsQaijRVkEY63'
+        })
+        console.log(response.data, response.status)
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+// deleteFile()
+
+
+//public
+async function generatePublicUrl(){
+    try {
+        const fileId = '1Xixl26g7tvVuOFlti-HcvTgPXnM0uvWe'
+        await driver.permissions.create({
+            fileId: fileId,
+            requestBody:{
+                role: 'reader',
+                type: 'anyone'
+            }
+        })
+
+        const result = await driver.files.get({
+            fileId: fileId,
+            fields: 'webViewLink, webContentLink'
+        })
+        console.log(result.data);
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+generatePublicUrl()
