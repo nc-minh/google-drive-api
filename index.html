@@ -18,17 +18,42 @@
           <div class="content__choose-file">
             <input type="file" name="file" id="file">
           </div>
-          <button class="content__choose-file__btn glow-on-hover" id="btn_upload">Upload</button>
+          <button class="glow-on-hover" id="btn_upload">Create File</button>
         </div>
         <span title="ID" class="content__create__id">1Yg692FyytyQuS12c4LrvsQaijRVkEY63</span>
       </div>
 
       <div class="content__delete">
-        <input type="text" class="content__delete__input">
+        <input type="text" class="content__delete__input" placeholder="ID delete">
+        <button class="glow-on-hover" id="btn_delete" >Delete file</button>
       </div>
-      
+      <div class="content__public">
+        <div class="content__public__wrap">
+          <input type="text" class="content__delete__input" placeholder="ID public">
+          <button class="glow-on-hover" id="btn_delete" >Public file</button>
+        </div>
+        <div class="content__public__responsive">
+          <a href="/" class="content__public__responsive--link">Download</a>
+          <a href="/" class="content__public__responsive--link">View</a>
+        </div>
+      </div>
+      <div class="content__public">
+        <div class="content__public__wrap">
+          <input type="text" class="content__delete__input" placeholder="Folder name">
+          <button class="glow-on-hover" id="btn_create_folder" >Create folder</button>
+        </div>
+      </div>
+      <div class="content__public">
+        <div class="content__public__wrap">
+          <input type="text" class="content__delete__input" placeholder="ID folder or link folder">
+          <button class="glow-on-hover" id="btn_create_folder" >Create file in folder</button>
+        </div>
+        <div class="content__public__responsive"></div>
+      </div>
     </div>
   </div>
+
+  <script src="src/js/index.js"></script>
 </body>
 
 </html>

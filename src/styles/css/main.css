@@ -21,16 +21,21 @@
 
 .content__create__wrap{
     display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
 }
 
 .content__create__id{
     width: 100%;
+    height: 45px;
     display: block;
     background-color: blanchedalmond;
     border-radius: 10px;
     margin: 12px 0;
     text-align: center;
     padding: 12px 16px;
+    font-size: 14px;
 }
 
 .content__choose-file{
@@ -49,8 +54,62 @@
 
 }
 
+.content__delete{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+}
+
+.content__delete__input{
+    background-color: blanchedalmond;
+    flex: 1;
+    height: 100%;
+    padding: 0 12px;
+    width: 100%;
+    outline: none;
+    border: none;
+    font-size: 14px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.content__public__wrap{
+    margin-top: 12px;
+    display: flex;
+    height: 45px;
+}
+
+.content__public__responsive{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+    margin-top: 12px;
+}
+
+.content__public__responsive--link{
+    width: 100px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 2px solid #00ffd5;
+    border-radius: 9999px;
+    cursor: pointer;
+    color: #ff0000;
+    margin-left: 5px;
+}
+
+.content__public__responsive--link:hover{
+    opacity: .8;
+}
+
 
 .glow-on-hover {
+    height: 100%;
+    min-width: 150px;
     padding: 12px 16px;
     border: 2px solid #00ffd5;
     outline: none;
