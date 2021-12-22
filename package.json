@@ -1,6 +1,32 @@
 {
+  "scripts": {
+    "start": "nodemon index.js"
+  },
   "dependencies": {
     "dotenv": "^10.0.0",
-    "googleapis": "^92.0.0"
-  }
+    "express": "^4.17.2",
+    "express-handlebars": "^6.0.2",
+    "googleapis": "^92.0.0",
+    "nodemon": "^2.0.15"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "name": "google-driver-api",
+  "version": "1.0.0",
+  "description": "google-driver-api",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nc-minh/google-driver-api.git"
+  },
+  "keywords": [
+    "driver-api"
+  ],
+  "author": "ncm",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nc-minh/google-driver-api/issues"
+  },
+  "homepage": "https://github.com/nc-minh/google-driver-api#readme"
 }
