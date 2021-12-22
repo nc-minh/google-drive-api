@@ -1,6 +1,1 @@
 **app coming soon**
-
-PORT=3006
-CLIENT_ID=1064913151029233
-CLIENT_SECRET=268a60355192e5b4f23de15932389d53
-CALL_BACK_URL=https://f226-113-191-154-20.ngrok.io/auth/facebook/callback
