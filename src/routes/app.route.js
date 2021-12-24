@@ -3,7 +3,6 @@ const homeRouter = require('./home.route')
 function route(app){
     
     app.use('/api', appRouter)
-
     app.use('/', homeRouter)
 
 }

@@ -2,20 +2,16 @@ function uploadFile() {
     var file = document.getElementById('file')
     var _file = file.files[0]
 
-
+    // tao form muiltipart de upload
+    let formData = new FormData();
+    // key là file, tẹo trên server cũng đọc thế
+    formData.append("file", _file);
 
     var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    var raw = JSON.stringify({
-        "filepath": 'index.js',
-        "name": 'okok'
-    });
 
     var requestOptions = {
         method: 'POST',
-        headers: myHeaders,
-        body: raw,
+        body: formData,
         redirect: 'follow'
     };
 

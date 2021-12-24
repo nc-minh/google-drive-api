@@ -1,8 +1,10 @@
 var path = require('path')
 const express = require('express')
+var fileupload = require("express-fileupload");
 const app = express()
 const port = 3333
 
+app.use(fileupload());
 app.use(express.json())
 
 //route init

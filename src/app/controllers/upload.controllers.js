@@ -1,53 +1,40 @@
 var driver = require('../middleware/connect')
 const fs = require('fs')
-var multer = require('multer')
-const { file } = require('googleapis/build/src/apis/file')
-
-var storage = multer.diskStorage({
-    destination: function (req, file, callback) {
-        callback(null, '../../../public/data');
-    },
-    filename: function (req, file, callback) {
-        callback(null, file.originalname);
-    }
-})
-
-var _upload = multer({ storage: storage }).single('myfile')
 
 class AppControllers {
 
     //[POST: /api/upload]
     async upload(req, res, next) {
+        const file = req.files.file // req.files.file (".file" là lấy theo key gửi lên ở fetch)
+        const filePath = `public/data/${file.name}`
+        // save file vào thư mục data
+        file.mv(filePath, (err) => {
+            if (err)
+                throw new Error("save fail")
 
-        _upload(req,res,function(err){
-            if(err){
-                return res.end('Error uploading file')
-            }
-    
-            res.end('File is uploaded successfully')
-        })
-
-
-        var filepath = req.body.filepath
-        var name = req.body.name
-        console.log(fs.createReadStream(filepath));
-        try {
-            const response = await driver.files.create({
-                requestBody:{
-                    name: name,
-                },
-                media:{
-                    body: fs.createReadStream(filepath)
+            // upload lên driver
+            const fileMetadata = {
+                'name': file.name
+            };
+            const media = {
+                mimeType: file.mimetype,
+                body: fs.createReadStream(filePath) // đọc file từ đĩa
+            };
+            driver.files.create({
+                resource: fileMetadata,
+                media: media,
+                fields: 'id'
+            }, (err, file) => {
+                if (err) {
+                    // Handle error
+                    console.error(err);
+                    res.send('fail')
+                } else {
+                    console.log('File Id: ', file.data.id);
+                    res.send('success')
                 }
-            })
-            res.json({
-                response: response.data
-            })
-        } catch (error) {
-            res.json({
-                error: error.message
-            })
-        }
+            });
+        })
     }
 }
 
