@@ -3,13 +3,14 @@ const express = require('express')
 const app = express()
 const port = 3333
 
+app.use(express.json())
+
 //route init
 const route = require('./src/routes/app.route.js')
 
 
 //config public resources
 app.use('/public', express.static(path.join(__dirname, '/public')))
-
 
 route(app)
 

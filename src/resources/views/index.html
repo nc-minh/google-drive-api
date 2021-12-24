@@ -23,15 +23,24 @@
         </div>
         <span title="ID" class="content__create__id">1Yg692FyytyQuS12c4LrvsQaijRVkEY63</span>
       </div>
+      <form id="uploadForm" enctype="multipart/form-data" action="/api/upload" method="post">
+        <input type="file" name="myfile" />
+        <br />
+        <br />
+        <input type="submit" value="Upload Image" name="submit">
+        <br />
+        <br />
+        <span id="status"></span>
+      </form>
 
       <div class="content__delete">
         <input type="text" class="content__delete__input" placeholder="ID delete">
-        <button class="glow-on-hover" id="btn_delete" >Delete file</button>
+        <button class="glow-on-hover" id="btn_delete">Delete file</button>
       </div>
       <div class="content__public">
         <div class="content__public__wrap">
           <input type="text" class="content__delete__input" placeholder="ID public">
-          <button class="glow-on-hover" id="btn_delete" >Public file</button>
+          <button class="glow-on-hover" id="btn_delete">Public file</button>
         </div>
         <div class="content__public__responsive">
           <a href="/" class="content__public__responsive--link">Download</a>
@@ -41,20 +50,20 @@
       <div class="content__public">
         <div class="content__public__wrap">
           <input type="text" class="content__delete__input" placeholder="Folder name">
-          <button class="glow-on-hover" id="btn_create_folder" >Create folder</button>
+          <button class="glow-on-hover" id="btn_create_folder">Create folder</button>
         </div>
       </div>
       <div class="content__public">
         <div class="content__public__wrap">
           <input type="text" class="content__delete__input" placeholder="ID folder or link folder">
-          <button class="glow-on-hover" id="btn_create_folder" >Create file in folder</button>
+          <button class="glow-on-hover" id="btn_create_folder">Create file in folder</button>
         </div>
         <div class="content__public__responsive"></div>
       </div>
     </div>
   </div>
 
-  <script src="src/js/index.js"></script>
+  <script src="public/js/main.js"></script>
 </body>
 
 </html>
