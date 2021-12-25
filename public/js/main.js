@@ -7,8 +7,6 @@ function uploadFile() {
     // key là file, tẹo trên server cũng đọc thế
     formData.append("file", _file);
 
-    var myHeaders = new Headers();
-
     var requestOptions = {
         method: 'POST',
         body: formData,
@@ -16,7 +14,7 @@ function uploadFile() {
     };
 
     fetch("http://localhost:3333/api/upload", requestOptions)
-        .then(response => response.text())
+        .then(response => response.json())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
 }
