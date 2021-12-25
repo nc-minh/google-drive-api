@@ -2,7 +2,6 @@ require('dotenv').config()
 
 
 const {google} = require('googleapis')
-const { drive } = require('googleapis/build/src/apis/drive')
 
 const CLIENT_ID = process.env.CLIENT_ID
 const CLIENT_SECRET = process.env.CLIENT_SECRET
