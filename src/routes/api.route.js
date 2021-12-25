@@ -6,6 +6,7 @@ const deleteControllers = require('../app/controllers/delete.controllers')
 const publicControllers = require('../app/controllers/public.controllers')
 const createFolderControllers = require('../app/controllers/create_folder.controllers')
 const uploadInFolderControllers = require('../app/controllers/upload_in_folder.controllers')
+const uploadPublicControllers = require('../app/controllers/upload_public.controllers')
 
 router.post('/upload', uploadControllers.upload)
 
@@ -17,4 +18,5 @@ router.post('/create-folder', createFolderControllers.createFolder)
 
 router.post('/upload-in-folder', uploadInFolderControllers.uploadInFolder)
 
+router.post('/upload-public', uploadPublicControllers.uploadPublic)
 module.exports = router
