@@ -15,7 +15,7 @@ function uploadFile() {
         redirect: 'follow'
     };
 
-    fetch("http://localhost:3333/api/upload", requestOptions)
+    fetch("/api/upload", requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
