@@ -4,17 +4,20 @@ const fs = require('fs')
 class AppControllers {
 
     //[POST: /api/upload]
-    async upload(req, res, next) {
+    async uploadInFolder(req, res, next) {
         const file = req.files.file // req.files.file (".file" là lấy theo key gửi lên ở fetch)
+        const id = req.body.id
         const filePath = `public/data/${file.name}`
-        // save file vào thư mục data
+        
+        //save file vào thư mục data
         await file.mv(filePath, (err) => {
             if (err)
                 throw new Error("save fail")
 
             // upload lên driver
             const fileMetadata = {
-                name: file.name
+                name: file.name,
+                parents: [id]
             }
             const media = {
                 mimeType: file.mimetype,
