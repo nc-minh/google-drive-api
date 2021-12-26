@@ -1,8 +1,31 @@
-**app coming soon**
+# Google drive api
 
-`https://drive.google.com/uc?export=view&id={fileId}`
-`<iframe width="" height="" src="https://drive.google.com/file/d/{fileId}/preview"></iframe>`
-<video width="320" height="240" controls>
-    <source src="https://drive.google.com/uc?export=preview&id={fileId}" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
+<div align="center" >
+    <img width="350px" src="public/img/api-img.png"/>
+</div>
+
+**Đây là hệ thống dựa trên API của google drive để tạo ra một số API nhằm để triển khai lưu trữ file(img, video, ...)**
+
+## Giới thiệu API
+
+Hiện tại đang có 6 API (cập nhật thêm sau)
+
+- `/upload` : dùng để upload file lên ***my drive***
+- `/delete` : dùng để xóa file theo ***fileID***
+- `/public` : dùng để public file theo ***fileID hoặc folderID***
+- `/create-folder` : dùng để tạo folder
+- `/upload-in-folder` : dùng để upload file vào trong một thư mục ***theo folderID (mặc định sẽ vào mydrive)***
+- `/upload-public` : dùng để upload file và public nó lên ***my drive***
+
+## Cách sử dụng
+
+```js
+function HelloMessage({ name }) {
+  return <div>Hello {name}</div>;
+}
+
+ReactDOM.render(
+  <HelloMessage name="Taylor" />,
+  document.getElementById('container')
+);
+```
