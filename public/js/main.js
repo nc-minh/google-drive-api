@@ -25,7 +25,7 @@ function uploadFile() {
         redirect: 'follow'
     };
 
-    fetch("/api/upload-in-folder", requestOptions)
+    fetch("/api/upload-public", requestOptions)
         .then(response => response.json())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));

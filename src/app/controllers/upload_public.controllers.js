@@ -8,9 +8,6 @@ class AppControllers {
         const file = req.files.file // req.files.file (".file" là lấy theo key gửi lên ở fetch)
         const id = req.body.id
         const filePath = `public/data/${file.name}`
-
-        console.log(id);
-        console.log('red ' + req.body.id);
         
         //save file vào thư mục data
         await file.mv(filePath, (err) => {
@@ -47,16 +44,40 @@ class AppControllers {
                         message: 'Upload failed'
                     })
                 } else {
-                    console.log('File Id: ', file.data.id);
-                    res.status(200).json({
-                        message: 'Upload successfully!',
-                        id: file.data.id
-                    })
-
+                    console.log('File Id: ', file.data.id)
                     //xoa file
                     await fs.unlinkSync(filePath)
+
+                    //public 
+                    try {
+                        await driver.permissions.create({
+                            fileId: file.data.id,
+                            requestBody: {
+                                role: 'reader',
+                                type: 'anyone'
+                            }
+                        })
+                        const result = await driver.files.get({
+                            fileId: file.data.id,
+                            fields: 'webViewLink, webContentLink'
+                        })
+                        res.status(200).json({
+                            message: 'Upload and Public successfully!',
+                            id: file.data.id,
+                            data: result.data
+                        })
+    
+                        console.log(result.data)
+                    } catch (error) {
+                        console.log(error.message)
+                        res.status(500).json({
+                            error: error.message
+                        })
+                    }
                 }
-            });
+            })
+
+
         })
 
     }
