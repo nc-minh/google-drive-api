@@ -63,6 +63,7 @@ class AppControllers {
                                 fields: 'webViewLink, webContentLink'
                             })
                             res.status(200).json({
+                                status: 'OK',
                                 message: 'Upload and Public successfully!',
                                 id: file.data.id,
                                 data: result.data

@@ -22,7 +22,7 @@
           </div>
           <button class="glow-on-hover" id="btn_upload" onclick="uploadFile()">Action</button>
         </div>
-        <div title="ID" class="content__item__show">1Yg692FyytyQuS12c4LrvsQaijRVkEY63</div>
+        <div id="upload__show" title="ID" class="content__item__show">ID</div>
       </div>
 
       <div class="content__item">
@@ -31,44 +31,46 @@
           <div class="content__choose-file">
             <input class="input__text" type="text" name="text" id="delete" placeholder="Delete ID">
           </div>
-          <button class="glow-on-hover" id="btn_upload" onclick="uploadFile()">Action</button>
+          <button class="glow-on-hover" id="btn_upload" onclick="deleteFile()">Action</button>
         </div>
-        <div title="ID" class="content__item__show">1Yg692FyytyQuS12c4LrvsQaijRVkEY63</div>
+        <div id="delete__show" title="ID" class="content__item__show"></div>
       </div>
 
       <div class="content__item">
         <h3 class="content__item__name">Public file</h3>
         <div class="content__item__wrap">
           <div class="content__choose-file">
-            <input class="input__text" type="text" name="text" id="delete" placeholder="Public ID">
+            <input class="input__text" type="text" name="text" id="public" placeholder="Public ID">
           </div>
-          <button class="glow-on-hover" id="btn_upload" onclick="uploadFile()">Action</button>
+          <button class="glow-on-hover" id="btn_upload" onclick="publicFile()">Action</button>
         </div>
-        <div class="content__item__show">
-          <a target="_blank" title="download" href="/">Download</a>
-          <a target="_blank" title="view" href="/">View</a>
+        <div id="public__show" class="content__item__show">
+          <a id="link__download" target="_blank" title="download" href="/">Download</a>
+          <a id="link__view" target="_blank" title="view" href="/">View</a>
         </div>
+        <div id="public__show__text" class="content__item__show__text"></div>
       </div>
 
       <div class="content__item">
         <h3 class="content__item__name">Upload file and public</h3>
         <div class="content__item__wrap">
           <div class="content__choose-file">
-            <input type="file" name="file" id="file">
+            <input type="file" name="file" id="file_upload_public">
           </div>
-          <button class="glow-on-hover" id="btn_upload" onclick="uploadFile()">Action</button>
+          <button class="glow-on-hover" id="btn_upload" onclick="uploadAndPublic()">Action</button>
         </div>
-        <div title="ID" class="content__item__show">
-          <a target="_blank" title="download" href="/">Download</a>
-          <a target="_blank" title="view" href="/">View</a>
+        <div id="upload_public__show" class="content__item__show">
+          <a id="up_link__download" target="_blank" title="download" href="/">Download</a>
+          <a id="up_link__view" target="_blank" title="view" href="/">View</a>
         </div>
+        <div id="upload__public__show__text" class="content__item__show__text"></div>
       </div>
 
       <div class="content__item">
         <h3 class="content__item__name">Create folder</h3>
         <div class="content__item__wrap">
           <div class="content__choose-file">
-            <input class="input__text" type="text" name="text" id="delete" placeholder="Folder name">
+            <input class="input__text" type="text" name="text" id="delete" placeholder="Folder name - defaults(New Folder)">
           </div>
           <button class="glow-on-hover" id="btn_upload" onclick="uploadFile()">Action</button>
         </div>

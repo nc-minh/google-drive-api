@@ -5,14 +5,14 @@ class AppControllers {
     //[POST: /api/delete]
     async delete(req, res, next) {
         const id = req.body.id
-        
+        console.log(id);
         try {
             const response = await driver.files.delete({
                 fileId: id
             })
-            console.log(response)
             res.status(200).json({
-                message: 'Delete successfully!'
+                message: 'Delete successfully!',
+                status: 'OK'
             })
         } catch (error) {
             console.log(error.message)

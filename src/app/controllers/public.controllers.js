@@ -23,6 +23,7 @@ class AppControllers {
             })
             console.log(result.data);
             res.status(200).json({
+                status: 'OK',
                 message: 'Public successfully!',
                 data: result.data
             })

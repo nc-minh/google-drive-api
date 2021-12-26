@@ -5,6 +5,13 @@ class AppControllers {
 
     //[POST: /api/upload]
     async uploadInFolder(req, res, next) {
+
+        if (!req.files) {
+            res.status(400).json({
+                message: 'Upload failed - missing files',
+                status: 'missing'
+            })
+        }
         try {
             const file = req.files.file // req.files.file (".file" là lấy theo key gửi lên ở fetch)
             const id = req.body.id
