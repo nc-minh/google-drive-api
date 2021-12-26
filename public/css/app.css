@@ -4,13 +4,17 @@
     box-sizing: border-box;
 }
 
-.app{
+html{
     background-color: #131019;
+}
+
+.app{
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 50px;
 }
 
 .app__title{
