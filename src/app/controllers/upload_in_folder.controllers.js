@@ -5,47 +5,51 @@ class AppControllers {
 
     //[POST: /api/upload]
     async uploadInFolder(req, res, next) {
-        const file = req.files.file // req.files.file (".file" là lấy theo key gửi lên ở fetch)
-        const id = req.body.id
-        const filePath = `public/data/${file.name}`
-        
-        //save file vào thư mục data
-        await file.mv(filePath, (err) => {
-            if (err)
-                throw new Error("save fail")
+        try {
+            const file = req.files.file // req.files.file (".file" là lấy theo key gửi lên ở fetch)
+            const id = req.body.id
+            const filePath = `public/data/${file.name}`
 
-            // upload lên driver
-            const fileMetadata = {
-                name: file.name,
-                parents: [id]
-            }
-            const media = {
-                mimeType: file.mimetype,
-                body: fs.createReadStream(filePath) // đọc file từ đĩa
-            }
-            driver.files.create({
-                resource: fileMetadata,
-                media: media,
-                fields: 'id'
-            }, async (err, file) => {
-                if (err) {
-                    // Handle error
-                    console.error(err);
-                    res.status(500).json({
-                        message: 'Upload failed'
-                    })
-                } else {
-                    console.log('File Id: ', file.data.id);
-                    res.status(200).json({
-                        message: 'Upload successfully!',
-                        id: file.data.id
-                    })
+            //save file vào thư mục data
+            await file.mv(filePath, (err) => {
+                if (err)
+                    throw new Error("save fail")
 
-                    //xoa file
-                    await fs.unlinkSync(filePath)
+                // upload lên driver
+                const fileMetadata = {
+                    name: file.name,
+                    parents: [id]
                 }
-            });
-        })
+                const media = {
+                    mimeType: file.mimetype,
+                    body: fs.createReadStream(filePath) // đọc file từ đĩa
+                }
+                driver.files.create({
+                    resource: fileMetadata,
+                    media: media,
+                    fields: 'id'
+                }, async (err, file) => {
+                    if (err) {
+                        // Handle error
+                        console.error(err);
+                        res.status(500).json({
+                            message: 'Upload failed'
+                        })
+                    } else {
+                        console.log('File Id: ', file.data.id);
+                        res.status(200).json({
+                            message: 'Upload successfully!',
+                            id: file.data.id
+                        })
+
+                        //xoa file
+                        await fs.unlinkSync(filePath)
+                    }
+                });
+            })
+        } catch (error) {
+            console.log(error.message)
+        }
 
     }
 }
