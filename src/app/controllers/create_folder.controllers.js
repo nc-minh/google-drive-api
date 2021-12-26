@@ -17,7 +17,8 @@ class AppControllers {
             console.log(response.data)
             res.status(200).json({
                 message: 'Create folder successfully!',
-                data: response.data
+                data: response.data,
+                status: 'OK'
             })
     
         } catch (error) {

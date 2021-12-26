@@ -23,9 +23,16 @@ class AppControllers {
                     throw new Error("save fail")
 
                 // upload lên driver
-                const fileMetadata = {
-                    name: file.name,
-                    parents: [id]
+                var fileMetadata
+                if(!id){
+                    fileMetadata = {
+                        name: file.name
+                    }
+                }else{
+                    fileMetadata = {
+                        name: file.name,
+                        parents: [id]
+                    }
                 }
                 const media = {
                     mimeType: file.mimetype,
@@ -46,7 +53,8 @@ class AppControllers {
                         console.log('File Id: ', file.data.id);
                         res.status(200).json({
                             message: 'Upload successfully!',
-                            id: file.data.id
+                            id: file.data.id,
+                            status: 'OK'
                         })
 
                         //xoa file

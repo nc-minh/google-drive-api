@@ -85,6 +85,10 @@ html{
     display: none;
 }
 
+.content__item__show--input{
+    display: block;
+}
+
 .content__item__show a{
     text-decoration: none;
     color: navy;

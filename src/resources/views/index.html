@@ -70,24 +70,25 @@
         <h3 class="content__item__name">Create folder</h3>
         <div class="content__item__wrap">
           <div class="content__choose-file">
-            <input class="input__text" type="text" name="text" id="delete" placeholder="Folder name - defaults(New Folder)">
+            <input class="input__text" type="text" name="text" id="filename_create_folder" placeholder="Folder name - defaults(New Folder)">
           </div>
-          <button class="glow-on-hover" id="btn_upload" onclick="uploadFile()">Action</button>
+          <button class="glow-on-hover" id="btn_upload" onclick="createFolder()">Action</button>
         </div>
-        <div title="ID" class="content__item__show">1Yg692FyytyQuS12c4LrvsQaijRVkEY63</div>
+        <div id="create_folder" class="content__item__show"></div>
       </div>
 
       <div class="content__item">
         <h3 class="content__item__name">Upload file in Folder</h3>
         <div class="content__item__wrap">
           <div class="content__choose-file">
-            <input type="file" name="file" id="file">
+            <input type="file" name="file" id="file_upload_in_folder">
           </div>
-          <button class="glow-on-hover" id="btn_upload" onclick="uploadFile()">Action</button>
+          <button class="glow-on-hover" id="btn_upload" onclick="uploadInFolder()">Action</button>
         </div>
         <div title="ID" class="content__item__show content__item__show--input">
-          <input class="input__text" type="text" name="text" id="delete" placeholder="FolderID you want to upload file">
+          <input class="input__text" type="text" name="text" id="id_upload_in_folder" placeholder="FolderID you want to upload file">
         </div>
+        <div id="upload_in_folder" class="content__item__show"></div>
       </div>
     </div>
   </div>

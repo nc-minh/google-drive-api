@@ -150,19 +150,54 @@ function uploadAndPublic() {
         .catch(error => console.log('error', error));
 }
 
-function uploadPublic() {
-    var file = document.getElementById('file')
-    var _file = file.files[0]
-
+function createFolder() {
+    var name = document.getElementById('filename_create_folder').value
+    var create_folder = document.getElementById('create_folder')
 
     // tao form muiltipart de upload
     let formData = new FormData();
     // key là file, tẹo trên server cũng đọc thế
 
-    formData.append('file', _file);
-    
-    
+    formData.append('name', name);
 
+    console.log(formData)
+    var requestOptions = {
+        method: 'POST',
+        body: formData,
+        redirect: 'follow'
+    };
+
+    fetch("/api/create-folder", requestOptions)
+        .then(response => response.json())
+        .then((result) => {
+            if(result.status == 'OK'){
+                create_folder.style.display = 'block'
+                create_folder.innerText = result.data.id
+            }else{
+                create_folder.innerText = result.error
+            }
+            console.log(result)
+        })
+        .catch(error => console.log('error', error))
+}
+
+function uploadInFolder() {
+    var file = document.getElementById('file_upload_in_folder')
+    var id_upload_in_folder = document.getElementById('id_upload_in_folder').value
+    var upload_in_folder = document.getElementById('upload_in_folder')
+
+    console.log('idFolder ' + id_upload_in_folder)
+    var _file = file.files[0]
+
+    // tao form muiltipart de upload
+    let formData = new FormData();
+    // key là file, tẹo trên server cũng đọc thế
+    if(!id_upload_in_folder){
+        formData.append('file', _file)
+    }else{
+        formData.append('file', _file)
+        formData.append('id', id_upload_in_folder)
+    }
     console.log(formData)
     var requestOptions = {
         method: 'POST',
@@ -172,6 +207,20 @@ function uploadPublic() {
 
     fetch("/api/upload-in-folder", requestOptions)
         .then(response => response.json())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+        .then((result) => {
+            console.log(result)
+
+            
+            upload_in_folder.style.display = 'block'
+            if(result.status == 'OK'){
+                upload_in_folder.innerText = result.id
+            }else if(result.status == 'missing'){
+                upload_in_folder.innerText = result.message
+                upload_in_folder.style.color = '#ea1010'
+            }else{
+                upload_in_folder.innerText = result.error
+            }
+            
+        })
+        .catch(error => console.log('error', error))
 }
