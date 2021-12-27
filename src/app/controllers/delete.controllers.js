@@ -2,7 +2,7 @@ var driver = require('../middleware/connect')
 
 class AppControllers {
 
-    //[DELETE: /api/delete]
+    //[DELETE: /api/delete/:id]
     async delete(req, res, next) {
         const id = req.params.id
         try {

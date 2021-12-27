@@ -59,17 +59,25 @@ var requestOptions = {
 ```
 ---
 - API [DELETE](/src/app/controllers/delete.controllers.js) :
->Nhận vào id của file cần xóa
+>Nhận vào id của file cần xóa truyền theo params `/api/delete/:id`
 ```js
 var id = document.getElementById('delete').value
-let formData = new FormData()
-formData.append('id', id)
-
+var delete__show = document.getElementById('delete__show')
+if (!id) {
+    delete__show.style.display = 'block'
+    delete__show.style.color = '#ea1010'
+    delete__show.innerText = 'Invalid ID!'
+} else {
 var requestOptions = {
-    method: 'POST',
-    body: formData,
+    method: 'DELETE',
     redirect: 'follow'
 };
+
+fetch(`http://localhost:3333/api/delete/${id}`, requestOptions)
+  .then(response => response.json())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+}
 ```
 >Trả lại (true)
 ```json
