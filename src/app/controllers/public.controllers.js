@@ -25,7 +25,8 @@ class AppControllers {
             res.status(200).json({
                 status: 'OK',
                 message: 'Public successfully!',
-                data: result.data
+                data: result.data,
+                id: fileId
             })
         } catch (error) {
             console.log(error.message)

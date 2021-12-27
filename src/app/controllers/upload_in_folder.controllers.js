@@ -47,7 +47,7 @@ class AppControllers {
                         // Handle error
                         console.error(err);
                         res.status(500).json({
-                            message: 'Upload failed'
+                            message: 'Upload failed!'
                         })
                     } else {
                         console.log('File Id: ', file.data.id);

@@ -8,7 +8,7 @@ class AppControllers {
 
         if (!req.files) {
             res.status(400).json({
-                message: 'Upload failed - missing files',
+                message: 'Upload failed - missing files!',
                 status: 'missing'
             })
         }

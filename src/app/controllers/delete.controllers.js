@@ -5,7 +5,6 @@ class AppControllers {
     //[POST: /api/delete]
     async delete(req, res, next) {
         const id = req.body.id
-        console.log(id);
         try {
             const response = await driver.files.delete({
                 fileId: id

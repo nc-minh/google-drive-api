@@ -23,15 +23,205 @@ Hiện tại đang có 6 API (cập nhật thêm sau)
 
 ## Cách sử dụng
 
-- Đầu tiên bạn hãy đọc file [`.env sample`](/.env%20sample) và thêm các key cần thiết như `CLIENT_ID`, `CLIENT_SECRET`, `REFRESH_TOKEN`.
+- Đầu tiên bạn hãy đọc file [`.env sample`](/.env%20sample) và tạo một file `.env` thêm các key cần thiết như `CLIENT_ID`, `CLIENT_SECRET`, `REDIRECT`, `REFRESH_TOKEN`.
 
+---
+
+- API [UPLOAD](/src/app/controllers/upload.controllers.js) :
+>Nhận vào file
 ```js
-function HelloMessage({ name }) {
-  return <div>Hello {name}</div>;
+var file = document.getElementById('file')
+var _file = file.files[0]
+let formData = new FormData()
+formData.append('file', _file)
+
+var requestOptions = {
+    method: 'POST',
+    body: formData,
+    redirect: 'follow'
+};
+```
+>Trả lại (true)
+```json
+{
+  "id": "id của file",
+  "message": "Upload successfully!"
+}
+```
+>Trả lại (false)
+```json
+{
+  "status": "missing",
+  "message": "Upload failed - missing files!"
+}
+```
+---
+- API [DELETE](/src/app/controllers/delete.controllers.js) :
+>Nhận vào id của file cần xóa
+```js
+var id = document.getElementById('delete').value
+let formData = new FormData()
+formData.append('id', id)
+
+var requestOptions = {
+    method: 'POST',
+    body: formData,
+    redirect: 'follow'
+};
+```
+>Trả lại (true)
+```json
+{
+  "status": "OK",
+  "message": "Delete successfully!"
+}
+```
+>Trả lại (false)
+
+Nếu không nhập
+```json
+{
+  "error": "Not found"
+}
+```
+Nếu nhập sai
+```json
+{
+  "error": "File not found: ..."
+}
+```
+---
+- API [PUBLIC](/src/app/controllers/public.controllers.js) :
+>Nhận vào id của file cần public
+```js
+var id = document.getElementById('public').value
+let formData = new FormData()
+formData.append('id', id)
+
+var requestOptions = {
+    method: 'POST',
+    body: formData,
+    redirect: 'follow'
+};
+```
+>Trả lại (true)
+```json
+{
+  "status": "OK",
+  "message": "Public successfully!",
+  "data": {
+    "webContentLink": "link download",
+    "webViewLink": "link view"
+  },
+  "id": "id của file"
+}
+```
+>Trả lại (false)
+
+Nếu không nhập
+```json
+{
+  "error": "Not found"
+}
+```
+Nếu nhập sai
+```json
+{
+  "error": "File not found: ..."
+}
+```
+---
+- API [CREATE-FOLDER](/src/app/controllers/create_folder.controllers.js) :
+>Nhận vào tên của folder muốn tạo, nếu không truyền gì thì mặc định sẽ là "New Folder"
+```js
+var name = document.getElementById('filename_create_folder').value
+let formData = new FormData();
+formData.append('name', name);
+
+var requestOptions = {
+    method: 'POST',
+    body: formData,
+    redirect: 'follow'
+};
+```
+>Trả lại (true)
+```json
+{
+  "status": "OK",
+  "message": "Create folder successfully!",
+  "data": {
+    "id": "id của folder vừa tạo",
+    "kind": "drive#file",
+    "mimeType": "application/vnd.google-apps.folder",
+    "name": "tên của folder(mặc định là New Folder)"
+  }
+}
+```
+---
+- API [UPLOAD-IN-FOLDER](/src/app/controllers/upload_in_folder.controllers.js) :
+>Nhận vào file và id của folder muốn upload, mặc định nếu không truyền id thì sẽ upload vào(my dive)
+```js
+var file = document.getElementById('file_upload_in_folder')
+var id_upload_in_folder = document.getElementById('id_upload_in_folder').value
+var _file = file.files[0]
+let formData = new FormData();
+if(!id_upload_in_folder){
+    formData.append('file', _file)
+}else{
+    formData.append('file', _file)
+    formData.append('id', id_upload_in_folder)
 }
 
-ReactDOM.render(
-  <HelloMessage name="Taylor" />,
-  document.getElementById('container')
-);
+var requestOptions = {
+    method: 'POST',
+    body: formData,
+    redirect: 'follow'
+};
 ```
+>Trả lại (true)
+```json
+{
+  "status": "OK",
+  "message": "Upload successfully!",
+  "id": "id của file"
+}
+```
+>Trả lại (false)
+```json
+{
+  "message": "Upload failed!"
+}
+```
+---
+- API [UPLOAD-PUBLIC](/src/app/controllers/upload_public.controllers.js) :
+>Nhận vào file
+```js
+var file = document.getElementById('file_upload_public')
+var _file = file.files[0]
+let formData = new FormData();
+formData.append('file', _file);
+
+var requestOptions = {
+    method: 'POST',
+    body: formData,
+    redirect: 'follow'
+};
+```
+>Trả lại (true)
+```json
+{
+  "status": "OK",
+  "message": "Upload and Public successfully!",
+  "data": {
+    "webContentLink": "link download",
+    "webViewLink": "link view"
+  },
+  "id": "id của file"
+}
+```
+>Trả lại (false)
+```json
+{
+  "message": "Upload failed - missing files",
+  "status": "missing"
+}

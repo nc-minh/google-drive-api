@@ -1,11 +1,7 @@
 function uploadFile() {
     var file = document.getElementById('file')
     var _file = file.files[0]
-
-    // tao form muiltipart de upload
     let formData = new FormData()
-    // key là file, tẹo trên server cũng đọc thế
-
     formData.append('file', _file)
     
     console.log(formData)
@@ -32,12 +28,8 @@ function uploadFile() {
 function deleteFile() {
     var id = document.getElementById('delete').value
     var delete__show = document.getElementById('delete__show')
-
     console.log(id)
-    // tao form muiltipart de upload
     let formData = new FormData()
-    // key là file, tẹo trên server cũng đọc thế
-
     formData.append('id', id)
 
     console.log(formData)
@@ -71,12 +63,8 @@ function publicFile() {
     var public__show__text = document.getElementById('public__show__text')
     var link__download = document.getElementById('link__download')
     var link__view = document.getElementById('link__view')
-    // tao form muiltipart de upload
     let formData = new FormData()
-    // key là file, tẹo trên server cũng đọc thế
-
     formData.append('id', id)
-
     console.log(formData)
     var requestOptions = {
         method: 'POST',
