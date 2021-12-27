@@ -212,3 +212,8 @@ function uploadInFolder() {
         })
         .catch(error => console.log('error', error))
 }
+
+function copyText(_this){
+    var text = _this.textContent || _this.innerText
+    navigator.clipboard.writeText(text)
+}

@@ -26,7 +26,7 @@
           </div>
           <button class="glow-on-hover" id="btn_upload" onclick="uploadFile()">Action</button>
         </div>
-        <div id="upload__show" title="ID" class="content__item__show">ID</div>
+        <div id="upload__show" title="Click to copy" class="content__item__show" onclick="copyText(this)">ID</div>
       </div>
 
       <div class="content__item">
@@ -37,7 +37,7 @@
           </div>
           <button class="glow-on-hover" id="btn_upload" onclick="deleteFile()">Action</button>
         </div>
-        <div id="delete__show" title="ID" class="content__item__show"></div>
+        <div id="delete__show" title="Click to copy" class="content__item__show" onclick="copyText(this)"></div>
       </div>
 
       <div class="content__item">
@@ -52,7 +52,7 @@
           <a id="link__download" target="_blank" title="download" href="/">Download</a>
           <a id="link__view" target="_blank" title="view" href="/">View</a>
         </div>
-        <div id="public__show__text" class="content__item__show__text"></div>
+        <div id="public__show__text" title="Click to copy" class="content__item__show__text" onclick="copyText(this)"></div>
       </div>
 
       <div class="content__item">
@@ -67,7 +67,7 @@
           <a id="up_link__download" target="_blank" title="download" href="/">Download</a>
           <a id="up_link__view" target="_blank" title="view" href="/">View</a>
         </div>
-        <div id="upload__public__show__text" class="content__item__show__text"></div>
+        <div id="upload__public__show__text" title="Click to copy" class="content__item__show__text" onclick="copyText(this)"></div>
       </div>
 
       <div class="content__item">
@@ -78,7 +78,7 @@
           </div>
           <button class="glow-on-hover" id="btn_upload" onclick="createFolder()">Action</button>
         </div>
-        <div id="create_folder" class="content__item__show"></div>
+        <div id="create_folder" title="Click to copy" class="content__item__show" onclick="copyText(this)"></div>
       </div>
 
       <div class="content__item">
@@ -92,7 +92,7 @@
         <div title="ID" class="content__item__show content__item__show--input">
           <input class="input__text" type="text" name="text" id="id_upload_in_folder" placeholder="FolderID you want to upload file">
         </div>
-        <div id="upload_in_folder" class="content__item__show"></div>
+        <div id="upload_in_folder" title="Click to copy" class="content__item__show" onclick="copyText(this)"></div>
       </div>
     </div>
 

@@ -94,6 +94,7 @@ html{
     margin-top: 5px;
     width: 100%;
     display: none;
+    position: relative;
 }
 
 .content__item__show--input{
