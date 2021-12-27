@@ -10,7 +10,7 @@ const uploadPublicControllers = require('../app/controllers/upload_public.contro
 
 router.post('/upload', uploadControllers.upload)
 
-router.post('/delete', deleteControllers.delete)
+router.delete('/delete/:id', deleteControllers.delete)
 
 router.post('/public', publicControllers.public)
 

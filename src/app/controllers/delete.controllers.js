@@ -2,9 +2,9 @@ var driver = require('../middleware/connect')
 
 class AppControllers {
 
-    //[POST: /api/delete]
+    //[DELETE: /api/delete]
     async delete(req, res, next) {
-        const id = req.body.id
+        const id = req.params.id
         try {
             const response = await driver.files.delete({
                 fileId: id

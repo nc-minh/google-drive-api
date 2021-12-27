@@ -28,21 +28,16 @@ function uploadFile() {
 function deleteFile() {
     var id = document.getElementById('delete').value
     var delete__show = document.getElementById('delete__show')
-    console.log(id)
-    let formData = new FormData()
-    formData.append('id', id)
-
-    console.log(formData)
+    
     var requestOptions = {
-        method: 'POST',
-        body: formData,
+        method: 'DELETE',
         redirect: 'follow'
-    };
-
-    fetch("/api/delete", requestOptions)
+      };
+      
+      fetch(`http://localhost:3333/api/delete/${id}`, requestOptions)
         .then(response => response.json())
         .then((result) => {
-            
+            console.log(result)
             if(result.status == 'OK'){
                 delete__show.style.display = 'block'
                 delete__show.style.color = '#04ac13'
@@ -52,9 +47,9 @@ function deleteFile() {
                 delete__show.style.color = '#ea1010'
                 delete__show.innerText = result.error
             }
-            console.log(result)
         })
         .catch(error => console.log('error', error));
+
 }
 
 function publicFile() {
