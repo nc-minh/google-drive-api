@@ -17,6 +17,17 @@ html{
     padding-bottom: 50px;
 }
 
+.app__link{
+    width: 45px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.app__link img{
+    width: 100%;
+    height: 100%;
+}
+
 .app__title{
     color: #fff;
     font-size: 36px;
@@ -171,4 +182,17 @@ html{
     0% { background-position: 0 0; }
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
+}
+
+.footer{
+    margin-top: 50px;
+}
+
+.copyright{
+    color: #878593;
+}
+
+.copyright a{
+    text-decoration: none;
+    color: blueviolet;
 }
