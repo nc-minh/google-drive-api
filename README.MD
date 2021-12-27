@@ -24,6 +24,7 @@ Hiện tại đang có 6 API (cập nhật thêm sau)
 ## Cách sử dụng
 
 - Đầu tiên bạn hãy đọc file [`.env sample`](/.env%20sample) và tạo một file `.env` thêm các key cần thiết như `CLIENT_ID`, `CLIENT_SECRET`, `REDIRECT`, `REFRESH_TOKEN`.
+- Mặc định website demo đang lưu vào drive của mình.
 - Ở đây mình dùng fetch để gọi API.
 
 ---
