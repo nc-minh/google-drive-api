@@ -23,7 +23,7 @@ Hiện tại đang có 6 API (cập nhật thêm sau)
 
 ## Cách sử dụng
 
-- Đầu tiên bạn hãy đọc file [`.env sample`](/.env-sample) và thêm các key cần thiết như `CLIENT_ID`, `CLIENT_SECRET`, `REFRESH_TOKEN`.
+- Đầu tiên bạn hãy đọc file [`.env sample`](/.env%20sample) và thêm các key cần thiết như `CLIENT_ID`, `CLIENT_SECRET`, `REFRESH_TOKEN`.
 
 ```js
 function HelloMessage({ name }) {
