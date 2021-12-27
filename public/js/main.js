@@ -3,7 +3,7 @@ function uploadFile() {
     var _file = file.files[0]
     let formData = new FormData()
     formData.append('file', _file)
-    
+
     console.log(formData)
     var requestOptions = {
         method: 'POST',
@@ -17,7 +17,7 @@ function uploadFile() {
             upload__show.style.display = 'block'
             upload__show.innerText = result.id
             console.log(result)
-            if(result.status == 'missing'){
+            if (result.status == 'missing') {
                 upload__show.innerText = result.message
                 upload__show.style.color = '#ea1010'
             }
@@ -28,27 +28,34 @@ function uploadFile() {
 function deleteFile() {
     var id = document.getElementById('delete').value
     var delete__show = document.getElementById('delete__show')
-    
-    var requestOptions = {
-        method: 'DELETE',
-        redirect: 'follow'
-      };
-      
-      fetch(`http://localhost:3333/api/delete/${id}`, requestOptions)
-        .then(response => response.json())
-        .then((result) => {
-            console.log(result)
-            if(result.status == 'OK'){
-                delete__show.style.display = 'block'
-                delete__show.style.color = '#04ac13'
-                delete__show.innerText = result.message
-            }else{
-                delete__show.style.display = 'block'
-                delete__show.style.color = '#ea1010'
-                delete__show.innerText = result.error
-            }
-        })
-        .catch(error => console.log('error', error));
+    if (!id) {
+        delete__show.style.display = 'block'
+        delete__show.style.color = '#ea1010'
+        delete__show.innerText = 'Invalid ID!'
+    } else {
+        var requestOptions = {
+            method: 'DELETE',
+            redirect: 'follow'
+        };
+
+        fetch(`http://localhost:3333/api/delete/${id}`, requestOptions)
+            .then(response => response.json())
+            .then((result) => {
+                console.log(result)
+                if (result.status == 'OK') {
+                    delete__show.style.display = 'block'
+                    delete__show.style.color = '#04ac13'
+                    delete__show.innerText = result.message
+                } else {
+                    delete__show.style.display = 'block'
+                    delete__show.style.color = '#ea1010'
+                    delete__show.innerText = result.error
+                }
+            })
+            .catch(error => console.log('error', error));
+    }
+
+
 
 }
 
@@ -70,13 +77,13 @@ function publicFile() {
     fetch("/api/public", requestOptions)
         .then(response => response.json())
         .then((result) => {
-            if(result.status == 'OK'){
+            if (result.status == 'OK') {
                 public__show.style.display = 'block'
                 public__show__text.style.display = 'none'
                 link__download.setAttribute('href', result.data.webContentLink)
                 link__view.setAttribute('href', result.data.webViewLink)
                 console.log('vào đúng');
-            }else{
+            } else {
                 public__show__text.style.display = 'block'
                 public__show.style.display == 'none'
                 public__show__text.style.color = '#ea1010'
@@ -112,17 +119,17 @@ function uploadAndPublic() {
     fetch("/api/upload-public", requestOptions)
         .then(response => response.json())
         .then((result) => {
-            if(result.status == 'OK'){
+            if (result.status == 'OK') {
                 upload_public__show.style.display = 'block'
                 upload__public__show__text.style.display = 'none'
                 up_link__download.setAttribute('href', result.data.webContentLink)
                 up_link__view.setAttribute('href', result.data.webViewLink)
-            }else if(result.status == 'missing'){
+            } else if (result.status == 'missing') {
                 upload__public__show__text.style.display = 'block'
                 upload_public__show.style.display = 'none'
                 upload__public__show__text.style.color = '#ea1010'
                 upload__public__show__text.innerText = result.message
-            }else{
+            } else {
                 upload__public__show__text.style.display = 'block'
                 upload_public__show.style.display = 'none'
                 upload__public__show__text.style.color = '#ea1010'
@@ -153,10 +160,10 @@ function createFolder() {
     fetch("/api/create-folder", requestOptions)
         .then(response => response.json())
         .then((result) => {
-            if(result.status == 'OK'){
+            if (result.status == 'OK') {
                 create_folder.style.display = 'block'
                 create_folder.innerText = result.data.id
-            }else{
+            } else {
                 create_folder.innerText = result.error
             }
             console.log(result)
@@ -175,9 +182,9 @@ function uploadInFolder() {
     // tao form muiltipart de upload
     let formData = new FormData();
     // key là file, tẹo trên server cũng đọc thế
-    if(!id_upload_in_folder){
+    if (!id_upload_in_folder) {
         formData.append('file', _file)
-    }else{
+    } else {
         formData.append('file', _file)
         formData.append('id', id_upload_in_folder)
     }
@@ -193,22 +200,22 @@ function uploadInFolder() {
         .then((result) => {
             console.log(result)
 
-            
+
             upload_in_folder.style.display = 'block'
-            if(result.status == 'OK'){
+            if (result.status == 'OK') {
                 upload_in_folder.innerText = result.id
-            }else if(result.status == 'missing'){
+            } else if (result.status == 'missing') {
                 upload_in_folder.innerText = result.message
                 upload_in_folder.style.color = '#ea1010'
-            }else{
+            } else {
                 upload_in_folder.innerText = result.error
             }
-            
+
         })
         .catch(error => console.log('error', error))
 }
 
-function copyText(_this){
+function copyText(_this) {
     var text = _this.textContent || _this.innerText
     navigator.clipboard.writeText(text)
 }

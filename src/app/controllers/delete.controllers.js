@@ -9,6 +9,8 @@ class AppControllers {
             const response = await driver.files.delete({
                 fileId: id
             })
+
+            console.log(response)
             res.status(200).json({
                 message: 'Delete successfully!',
                 status: 'OK'
