@@ -2,7 +2,8 @@ var path = require('path')
 const express = require('express')
 var fileupload = require("express-fileupload");
 const app = express()
-const port = 3333
+require('dotenv').config()
+const port = process.env.PORT || 3333
 
 app.use(fileupload());
 app.use(express.json())
