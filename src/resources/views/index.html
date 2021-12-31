@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Google Driver API</title>
   <link rel="shortcut icon" href="public/img/api.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="public/css/app.css">
 </head>
 
@@ -95,6 +96,13 @@
         <div id="upload_in_folder" title="Click to copy" class="content__item__show" onclick="copyText(this)"></div>
       </div>
     </div>
+
+    <div id="loading">
+      <i class="fas fa-spinner"></i>
+      <span id="cancel" onclick="RM()">Cancel</span>
+    </div>
+
+    <div class="notifications">Done</div>
 
     <footer class="footer">
       <p title="copyright" class="copyright">Copyright &copy; 2021 <a target="_blank" href="https://github.com/nc-minh/google-drive-api">Mars</a></p>

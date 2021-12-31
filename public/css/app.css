@@ -1,40 +1,40 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html{
+html {
     background-color: #131019;
 }
 
-.app{
-    width: 100%;
-    height: 100%;
+.app {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-bottom: 50px;
+    position: relative;
+    overflow: hidden;
 }
 
-.app__link{
+.app__link {
     width: 45px;
     height: auto;
     margin-bottom: 10px;
 }
 
-.app__link img{
+.app__link img {
     width: 100%;
     height: 100%;
 }
 
-.app__title{
+.app__title {
     color: #fff;
     font-size: 36px;
     margin: 24px 0;
 }
 
-.content{
+.content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -42,18 +42,18 @@ html{
     width: auto;
 }
 
-.content__item{
+.content__item {
     width: 100%;
     margin-top: 5px;
 }
 
-.content__item__name{
+.content__item__name {
     text-align: center;
     color: antiquewhite;
     margin-bottom: 5px;
 }
 
-.content__item__wrap{
+.content__item__wrap {
     display: flex;
     background-color: antiquewhite;
     border-radius: 10px;
@@ -61,7 +61,7 @@ html{
     width: auto;
 }
 
-.content__choose-file{
+.content__choose-file {
     flex: 1;
     display: flex;
     justify-content: center;
@@ -69,11 +69,11 @@ html{
     padding: 5px;
 }
 
-.content__choose-file input{
+.content__choose-file input {
     width: 100%;
 }
 
-.content__choose-file .input__text{
+.content__choose-file .input__text {
     width: 100%;
     outline: none;
     border: none;
@@ -85,7 +85,7 @@ html{
 }
 
 .content__item__show,
-.content__item__show__text{
+.content__item__show__text {
     height: 45px;
     background-color: antiquewhite;
     border-radius: 10px;
@@ -97,20 +97,20 @@ html{
     position: relative;
 }
 
-.content__item__show--input{
+.content__item__show--input {
     display: block;
 }
 
-.content__item__show a{
+.content__item__show a {
     text-decoration: none;
     color: navy;
 }
 
-.content__item__show a:hover{
+.content__item__show a:hover {
     color: red;
 }
 
-.content__item__show--input input{
+.content__item__show--input input {
     border: none;
     outline: none;
     padding: 10px 5px;
@@ -141,7 +141,7 @@ html{
     background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
     position: absolute;
     top: -2px;
-    left:-2px;
+    left: -2px;
     background-size: 400%;
     z-index: -1;
     filter: blur(5px);
@@ -180,20 +180,95 @@ html{
 }
 
 @keyframes glowing {
-    0% { background-position: 0 0; }
-    50% { background-position: 400% 0; }
-    100% { background-position: 0 0; }
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 400% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
 }
 
-.footer{
+.footer {
     margin-top: 50px;
 }
 
-.copyright{
+.copyright {
     color: #878593;
 }
 
-.copyright a{
+.copyright a {
     text-decoration: none;
     color: blueviolet;
+}
+
+#loading {
+    position: absolute;
+    background-color: rgba(17, 17, 17, .5);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: none;
+}
+
+#loading i {
+    font-size: 64px;
+    color: #fff;
+    animation: rotate 2s infinite linear;
+    display: block;
+}
+
+#cancel{
+    color: #fff;
+    padding: 10px 15px;
+    margin-top: 24px;
+    background-color: #7a00ff;
+    cursor: pointer;
+}
+
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.notifications{
+    position: absolute;
+    top: 85px;
+    right: 0;
+    width: 85px;
+    height: 40px;
+    background-color: #f6fff5;
+    border-radius: 5px 0 0 5px;
+    color: green;
+    text-align: center;
+    line-height: 40px;
+    border-left: 5px solid green;
+    animation: done 1s;
+    display: none;
+}
+
+@keyframes done{
+    from{
+        right: -85px;
+        opacity: 0;
+    }
+
+    to{
+        right: 0;
+        opacity: 1;
+    }
 }

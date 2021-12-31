@@ -1,4 +1,28 @@
+function loadding(){
+    var loading = document.getElementById('loading')
+    loading.style.display = 'flex'
+}
+
+function RMloadding(){
+    var loading = document.getElementById('loading')
+    var notifications = document.querySelector('.notifications')
+    loading.style.display = 'none'
+    notifications.style.display = 'block'
+
+    setTimeout(()=>{
+        notifications.style.display = 'none'
+    },1000)
+
+}
+
+function RM(){
+    var loading = document.getElementById('loading')
+    var notifications = document.querySelector('.notifications')
+    loading.style.display = 'none'
+}
+
 function uploadFile() {
+    loadding()
     var file = document.getElementById('file')
     var _file = file.files[0]
     let formData = new FormData()
@@ -14,6 +38,7 @@ function uploadFile() {
     fetch("/api/upload", requestOptions)
         .then(response => response.json())
         .then((result) => {
+            RMloadding()
             upload__show.style.display = 'block'
             upload__show.innerText = result.id
             console.log(result)
@@ -26,6 +51,7 @@ function uploadFile() {
 }
 
 function deleteFile() {
+    loadding()
     var id = document.getElementById('delete').value
     var delete__show = document.getElementById('delete__show')
     if (!id) {
@@ -41,6 +67,7 @@ function deleteFile() {
         fetch(`http://localhost:3333/api/delete/${id}`, requestOptions)
             .then(response => response.json())
             .then((result) => {
+                RMloadding()
                 console.log(result)
                 if (result.status == 'OK') {
                     delete__show.style.display = 'block'
@@ -60,6 +87,7 @@ function deleteFile() {
 }
 
 function publicFile() {
+    loadding()
     var id = document.getElementById('public').value
     var public__show = document.getElementById('public__show')
     var public__show__text = document.getElementById('public__show__text')
@@ -77,6 +105,7 @@ function publicFile() {
     fetch("/api/public", requestOptions)
         .then(response => response.json())
         .then((result) => {
+            RMloadding()
             if (result.status == 'OK') {
                 public__show.style.display = 'block'
                 public__show__text.style.display = 'none'
@@ -96,6 +125,7 @@ function publicFile() {
 }
 
 function uploadAndPublic() {
+    loadding()
     var file = document.getElementById('file_upload_public')
     var upload_public__show = document.getElementById('upload_public__show')
     var upload__public__show__text = document.getElementById('upload__public__show__text')
@@ -119,6 +149,7 @@ function uploadAndPublic() {
     fetch("/api/upload-public", requestOptions)
         .then(response => response.json())
         .then((result) => {
+            RMloadding()
             if (result.status == 'OK') {
                 upload_public__show.style.display = 'block'
                 upload__public__show__text.style.display = 'none'
@@ -141,6 +172,7 @@ function uploadAndPublic() {
 }
 
 function createFolder() {
+    loadding()
     var name = document.getElementById('filename_create_folder').value
     var create_folder = document.getElementById('create_folder')
 
@@ -160,6 +192,7 @@ function createFolder() {
     fetch("/api/create-folder", requestOptions)
         .then(response => response.json())
         .then((result) => {
+            RMloadding()
             if (result.status == 'OK') {
                 create_folder.style.display = 'block'
                 create_folder.innerText = result.data.id
@@ -172,6 +205,7 @@ function createFolder() {
 }
 
 function uploadInFolder() {
+    loadding()
     var file = document.getElementById('file_upload_in_folder')
     var id_upload_in_folder = document.getElementById('id_upload_in_folder').value
     var upload_in_folder = document.getElementById('upload_in_folder')
@@ -198,6 +232,7 @@ function uploadInFolder() {
     fetch("/api/upload-in-folder", requestOptions)
         .then(response => response.json())
         .then((result) => {
+            RMloadding()
             console.log(result)
 
 
