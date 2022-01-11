@@ -5,7 +5,7 @@ const app = express()
 require('dotenv').config()
 const port = process.env.PORT || 3333
 
-app.use(fileupload());
+app.use(fileupload())
 app.use(express.json())
 
 //route init

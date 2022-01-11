@@ -64,7 +64,7 @@ function deleteFile() {
             redirect: 'follow'
         };
 
-        fetch(`http://localhost:3333/api/delete/${id}`, requestOptions)
+        fetch(`/api/delete/${id}`, requestOptions)
             .then(response => response.json())
             .then((result) => {
                 RMloadding()
